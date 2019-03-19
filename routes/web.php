@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/hallo', function () {
+    return 'Hello world! Halo semuanya, selamat belajar Laravel.';
+});
+
+Route::get('content', 'ContentController@index');
