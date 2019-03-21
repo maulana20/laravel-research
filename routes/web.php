@@ -20,4 +20,4 @@ Route::get('/hallo', function () {
 });
 
 Route::get('user', 'UserController@index');
-Route::get('content', 'ContentController@index');
+Route::get('user/list', 'UserController@list');
