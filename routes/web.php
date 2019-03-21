@@ -21,3 +21,4 @@ Route::get('/hallo', function () {
 
 Route::get('user', 'UserController@index');
 Route::get('user/list', 'UserController@list');
+Route::get('user/edit', 'UserController@edit');
