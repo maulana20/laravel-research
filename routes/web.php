@@ -11,6 +11,7 @@
 |
 */
 
+/*
 Route::get('/', function () {
     return view('welcome');
 });
@@ -18,7 +19,15 @@ Route::get('/', function () {
 Route::get('/hallo', function () {
     return 'Hello world! Halo semuanya, selamat belajar Laravel.';
 });
+*/
 
 Route::get('user', 'UserController@index');
-Route::get('user/list', 'UserController@list');
+Route::group(['middleware' => ['web', 'auth', 'roles']],function () {
+	Route::group(['roles' => 'USER'], function () {
+		Route::resource('user/list', 'UserController@list');
+	});
+});
+
 Route::get('user/edit', 'UserController@edit');
+
+Route::get('login', ['as' => 'login', 'uses' => 'LoginController@index']);
