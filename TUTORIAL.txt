@@ -1,0 +1,7 @@
+[2019-03-21 20:51:00] php artisan cache:clear
+[2019-03-21 20:51:00] php artisan route:cache
+[2019-03-21 20:51:00] php artisan config:cache
+[2019-03-21 20:51:00] php artisan view:clear
+[2019-03-22 18:59:00] php artisan tinker
+[2019-03-22 20:38:00] php artisan make:model Role -m
+[2019-03-22 20:38:00] php artisan make:middleware CheckRole
