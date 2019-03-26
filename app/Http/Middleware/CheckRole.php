@@ -4,13 +4,17 @@ namespace App\Http\Middleware;
 
 use Closure;
 
+use App\User;
+
 class CheckRole
 {
 	public function handle($request, Closure $next)
 	{
 		$roles = $this->checkRoute($request->route());
 		
-		if ($parents->hasRole($roles) || !$roles) return $next($request);
+		$user = new User();
+		
+		if ($user->hasRole($roles) || !$roles) return $next($request);
 		
 		return abort(503, 'Anda tidak memiliki hak akses');
 	}

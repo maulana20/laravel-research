@@ -21,13 +21,9 @@ Route::get('/hallo', function () {
 });
 */
 
-Route::get('user', 'UserController@index');
-Route::group(['middleware' => ['web', 'auth', 'roles']],function () {
+Route::group(['middleware' => ['roles']],function () {
 	Route::group(['roles' => 'USER'], function () {
 		Route::resource('user/list', 'UserController@list');
 	});
 });
-
-Route::get('user/edit', 'UserController@edit');
-
 Route::get('login', ['as' => 'login', 'uses' => 'LoginController@index']);
