@@ -23,7 +23,9 @@ Route::get('/hallo', function () {
 
 Route::group(['middleware' => ['roles']],function () {
 	Route::group(['roles' => 'USER'], function () {
-		Route::resource('user/list', 'UserController@list');
+		Route::resource('user', 'UserController', [
+			'only' => ['list', 'show']
+		]);
 	});
 });
 Route::get('login', ['as' => 'login', 'uses' => 'LoginController@index']);
