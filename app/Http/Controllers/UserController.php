@@ -11,10 +11,6 @@ class UserController extends ParentController
 		$this->printResponse('success', 'Selamat datang di user !', '');
 	}
 	
-	public function show() {
-		$this->list();
-	}
-	
 	public function list()
 	{
 		$user_list = User::all();
