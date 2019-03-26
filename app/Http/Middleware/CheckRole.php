@@ -4,15 +4,14 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-use App\User;
+use App\Http\Controllers\ParentController;
 
-class CheckRole
+class CheckRole extends ParentController
 {
 	public function handle($request, Closure $next)
 	{
+		var_dump($this->session); exit();
 		$roles = $this->checkRoute($request->route());
-		
-		$user = new User();
 		
 		if ($user->hasRole($roles) || !$roles) return $next($request);
 		

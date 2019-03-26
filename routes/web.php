@@ -27,4 +27,4 @@ Route::group(['middleware' => ['roles']],function () {
 		Route::get('user/edit', 'UserController@edit');
 	});
 });
-Route::get('login', ['as' => 'login', 'uses' => 'LoginController@index']);
+Route::get('login', ['as' => 'login', 'uses' => 'AdminController@login']);
