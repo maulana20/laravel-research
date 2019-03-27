@@ -12,7 +12,7 @@ class UserController extends ParentController
 		$this->printResponse('success', 'Selamat datang di user !', '');
 	}
 	
-	public function list()
+	public function list(Request $request)
 	{
 		$user_list = User::all();
 		$this->printResponse('success', 'User list success !', ['list'=> $user_list]);

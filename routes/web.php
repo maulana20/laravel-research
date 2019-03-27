@@ -21,7 +21,7 @@ Route::get('/hallo', function () {
 });
 */
 
-Route::group(['middleware' => ['roles']],function () {
+Route::group(['middleware' => ['roles','web']],function () {
 	Route::group(['roles' => 'USER'], function () {
 		Route::get('user/list', 'UserController@list');
 		Route::get('user/edit', 'UserController@edit');
