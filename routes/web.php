@@ -27,4 +27,6 @@ Route::group(['middleware' => ['roles','web']],function () {
 		Route::get('user/edit', 'UserController@edit');
 	});
 });
+
 Route::get('login', ['as' => 'login', 'uses' => 'AdminController@login']);
+Route::get('logout', ['as' => 'logout', 'uses' => 'AdminController@logout']);

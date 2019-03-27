@@ -27,12 +27,20 @@ class AdminController extends ParentController
 			$group = new Group();
 			$access = $group->getAccess($user_row->group_id);
 			
-			$request->session()->put('acl', $access);
-			$request->session()->save();
+			$this->session::put('acl', $access);
+			$this->session::save();
 			
 			$this->printResponse('success', 'Berhasil login !', '');
 		} else {
 			$this->printResponse('failed', 'Gagal login !', '');
 		}
+	}
+	
+	public function logout(Request $request)
+	{
+		$this->session::flush();
+		$this->session::save();
+		
+		$this->printResponse('success', 'Berhasil logout !', '');
 	}
 }

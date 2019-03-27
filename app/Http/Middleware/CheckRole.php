@@ -10,7 +10,8 @@ class CheckRole extends Authenticatable
 {
 	public function handle($request, Closure $next)
 	{
-		var_dump($request->session()->get('acl'));
+		$this->have_role = $request->session()->get('acl');
+		
 		$roles = $this->checkRoute($request->route());
 		
 		if ($this->hasRole($roles) || !$roles) return $next($request);
@@ -32,7 +33,6 @@ class CheckRole extends Authenticatable
 	
 	public function hasRole($roles)
 	{
-		$this->have_role = $this->getRole();
 		if (is_array($roles)) {
 			foreach ($roles as $need_role) {
 				if ($this->isInRole($need_role)) return true;
@@ -49,9 +49,9 @@ class CheckRole extends Authenticatable
 	
 	public function isInRole($role)
 	{
-		return true;
-		if (empty($this->have_role)) return false;
+		$acl = unserialize($this->have_role);
+		if ( empty($acl) || !is_array($acl) ) return false;
 		
-		return ( strtolower($role) == strtolower($this->have_role->profile_code) ) ? true : false;
+		return ( in_array($role, $acl) ) ? true : false;
 	}
 }
