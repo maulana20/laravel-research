@@ -5,3 +5,6 @@
 [2019-03-22 18:59:00] php artisan tinker
 [2019-03-22 20:38:00] php artisan make:model Role -m
 [2019-03-22 20:38:00] php artisan make:middleware CheckRole
+[2019-03-22 20:38:00] php artisan serve
+[2019-03-30 18:12:00] php artisan make:resource Game
+[2019-03-30 18:14:00] php artisan make:model Game -mc
