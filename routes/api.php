@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 
+use App\Game;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -17,4 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/game/{id}', 'GameController@show');
+Route::get('/game/list', function () {
+	return Game::all();
+});
+Route::get('/game/edit/{id}', 'GameController@edit');
