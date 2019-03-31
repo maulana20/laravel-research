@@ -8,3 +8,5 @@
 [2019-03-22 20:38:00] php artisan serve
 [2019-03-30 18:12:00] php artisan make:resource Game
 [2019-03-30 18:14:00] php artisan make:model Game -mc
+[2019-03-31 12:42:00] php artisan make:resource Player
+[2019-03-30 18:43:00] php artisan make:model Player -mc

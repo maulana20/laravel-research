@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 
 use App\Game;
+use App\Player;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,3 +24,9 @@ Route::get('/game/list', function () {
 	return Game::all();
 });
 Route::get('/game/edit/{id}', 'GameController@edit');
+
+
+Route::get('/player/list', function () {
+	return Player::all();
+});
+Route::get('/player/edit/{id}', 'PlayerController@edit');
