@@ -35,3 +35,13 @@ Route::post('/player/ajaxedit/{id}', 'PlayerController@ajaxedit');
 Route::post('/player/ajaxdelete/{id}', 'PlayerController@ajaxdelete');
 Route::post('/player/ajaxactive/{id}', 'PlayerController@ajaxactive');
 Route::post('/player/ajaxinactive/{id}', 'PlayerController@ajaxinactive');
+
+Route::group(['middleware' => ['roles']],function () {
+	Route::group(['roles' => 'USER'], function () {
+		Route::get('user/list', 'UserController@list');
+		Route::get('user/edit', 'UserController@edit');
+	});
+});
+
+Route::get('login', ['as' => 'login', 'uses' => 'AdminController@login']);
+Route::get('logout', ['as' => 'logout', 'uses' => 'AdminController@logout']);

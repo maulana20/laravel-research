@@ -11,7 +11,6 @@
 |
 */
 
-/*
 Route::get('/', function () {
     return view('welcome');
 });
@@ -19,14 +18,3 @@ Route::get('/', function () {
 Route::get('/hallo', function () {
     return 'Hello world! Halo semuanya, selamat belajar Laravel.';
 });
-*/
-
-Route::group(['middleware' => ['roles','web']],function () {
-	Route::group(['roles' => 'USER'], function () {
-		Route::get('user/list', 'UserController@list');
-		Route::get('user/edit', 'UserController@edit');
-	});
-});
-
-Route::get('login', ['as' => 'login', 'uses' => 'AdminController@login']);
-Route::get('logout', ['as' => 'logout', 'uses' => 'AdminController@logout']);
