@@ -13,7 +13,7 @@ class GameController extends ParentController
 {
 	public function list()
 	{
-		$this->printResponse('success', 'Berhasil game list !', ['list' => Game::all()]);
+		$this->printResponse('success', 'Berhasil game list !', ['list' => Game::where('game_status', 'A')->get()]);
 	}
 	
     public function edit($id)
@@ -30,5 +30,12 @@ class GameController extends ParentController
 		Game::where('game_id', $id)->update(['game_name' => $param['name']]);
 		
 		$this->printResponse('success', 'Berhasil game ajax edit !', NULL);
+	}
+	
+	public function ajaxdelete($id)
+	{
+		Game::where('game_id', $id)->update(['game_status' => 'D']);
+		
+		$this->printResponse('success', 'Berhasil game ajax delete !', NULL);
 	}
 }

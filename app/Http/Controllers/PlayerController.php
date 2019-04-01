@@ -16,6 +16,7 @@ class PlayerController extends ParentController
 		$list = \DB::table('tblPlayer')
 				->join('tblGame', 'tblGame.game_id', '=', 'tblPlayer.game_id')
 				->select('tblPlayer.player_id', 'tblPlayer.player_name', 'tblGame.game_name', 'tblPlayer.player_score', 'tblPlayer.player_status')
+				->where('tblPlayer.player_status', 'A')
 				->get();
 		
 		$this->printResponse('success', 'Berhasil player list !', ['list' => $list]);
@@ -33,5 +34,12 @@ class PlayerController extends ParentController
 		Player::where('player_id', $id)->update(['player_name' => $param['name'], 'player_score' => $param['score']]);
 		
 		$this->printResponse('success', 'Berhasil player ajax edit !', NULL);
+	}
+	
+	public function ajaxdelete($id)
+	{
+		Player::where('player_id', $id)->update(['player_status' => 'D']);
+		
+		$this->printResponse('success', 'Berhasil player ajax delete !', NULL);
 	}
 }
