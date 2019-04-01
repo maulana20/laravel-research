@@ -26,3 +26,4 @@ Route::post('/game/ajaxedit/{id}', 'GameController@ajaxedit');
 
 Route::get('/player/list', 'PlayerController@list');
 Route::get('/player/edit/{id}', 'PlayerController@edit');
+Route::post('/player/ajaxedit/{id}', 'PlayerController@ajaxedit');
