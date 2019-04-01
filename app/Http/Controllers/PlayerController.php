@@ -16,7 +16,7 @@ class PlayerController extends ParentController
 		$list = \DB::table('tblPlayer')
 				->join('tblGame', 'tblGame.game_id', '=', 'tblPlayer.game_id')
 				->select('tblPlayer.player_id', 'tblPlayer.player_name', 'tblGame.game_name', 'tblPlayer.player_score', 'tblPlayer.player_status')
-				->where('tblPlayer.player_status', 'A')
+				->where('tblPlayer.player_status', '<>', 'D')
 				->get();
 		
 		$this->printResponse('success', 'Berhasil player list !', ['list' => $list]);
@@ -41,5 +41,19 @@ class PlayerController extends ParentController
 		Player::where('player_id', $id)->update(['player_status' => 'D']);
 		
 		$this->printResponse('success', 'Berhasil player ajax delete !', NULL);
+	}
+	
+	public function ajaxactive($id)
+	{
+		Player::where('player_id', $id)->update(['player_status' => 'A']);
+		
+		$this->printResponse('success', 'Berhasil player ajax active !', NULL);
+	}
+	
+	public function ajaxinactive($id)
+	{
+		Player::where('player_id', $id)->update(['player_status' => 'I']);
+		
+		$this->printResponse('success', 'Berhasil player ajax inactive !', NULL);
 	}
 }
