@@ -27,6 +27,20 @@ class PlayerController extends ParentController
 		$this->printResponse('success', 'Berhasil player tampil edit !', ['list' => Player::find($id)]);
 	}
 	
+	public function ajaxadd(Request $request)
+	{
+		$param = $request->all();
+		
+		$player = new Player;
+		$player->game_id = 2;
+		$player->player_name = $param['name'];
+		$player->player_score = $param['score'];
+		$player->player_status = 'A';
+		$player->save();
+		
+		$this->printResponse('success', 'Berhasil player ajax add !', NULL);
+	}
+	
 	public function ajaxedit(Request $request, $id)
 	{
 		$param = $request->all();

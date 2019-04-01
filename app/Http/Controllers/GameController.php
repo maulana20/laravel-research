@@ -23,6 +23,18 @@ class GameController extends ParentController
 		//return new GameResource(Game::find($id));
 	}
 	
+	public function ajaxadd(Request $request)
+	{
+		$param = $request->all();
+		
+		$game = new Game;
+		$game->game_name = $param['name'];
+		$game->game_status = 'A';
+		$game->save();
+		
+		$this->printResponse('success', 'Berhasil game ajax add !', NULL);
+	}
+	
 	public function ajaxedit(Request $request, $id)
 	{
 		$param = $request->all();
