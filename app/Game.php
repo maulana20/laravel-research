@@ -8,7 +8,7 @@ class Game extends Model
 {
 	protected $table = 'tblGame';
 	
-    protected $primaryKey = 'game_id';
-    
-    public $timestamps  = false;
+	protected $primaryKey = 'game_id';
+	
+	public $timestamps = false;
 }
