@@ -20,13 +20,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/game/list', function () {
-	return Game::all();
-});
+Route::get('/game/list', 'GameController@list');
 Route::get('/game/edit/{id}', 'GameController@edit');
 
-
-Route::get('/player/list', function () {
-	return Player::all();
-});
+Route::get('/player/list', 'PlayerController@list');
 Route::get('/player/edit/{id}', 'PlayerController@edit');
