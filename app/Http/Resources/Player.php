@@ -21,6 +21,7 @@ class Player extends Resource
 			'player_score' => $this->player_score,
 			'player_status' => $this->player_status,
 		];
+		
         // return parent::toArray($request);
     }
 }
